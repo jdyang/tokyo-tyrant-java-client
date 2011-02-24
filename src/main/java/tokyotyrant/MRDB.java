@@ -33,17 +33,13 @@ import tokyotyrant.protocol.Stat;
 import tokyotyrant.protocol.Sync;
 import tokyotyrant.protocol.Vanish;
 import tokyotyrant.protocol.Vsiz;
-import tokyotyrant.transcoder.SerializingTranscoder;
-import tokyotyrant.transcoder.StringTranscoder;
 import tokyotyrant.transcoder.Transcoder;
 
 /**
  * Multiple Rs DB. Replicated, Reliable, Responsive, Remote, etc.
  * API is similar to {@link RDB}, but {@link MRDB} returns {@link Future}.
  */
-public class MRDB {
-	private Transcoder keyTranscoder = new StringTranscoder();
-    private Transcoder valueTranscoder = new SerializingTranscoder();
+public class MRDB extends AbstractDB{
 	private long globalTimeout = 1000L;
 	private Networking networking;
 	
@@ -265,5 +261,10 @@ public class MRDB {
 			result.put(each.getAddress(), await(futures.get(each)));
 		}
 		return result;
+	}
+
+	@Override
+	public void open(NodeAddress address) {
+		
 	}
 }

@@ -1,29 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>tokyotyrant</groupId>
-	<artifactId>tokyotyrant</artifactId>
+	<groupId>com.holmes.tokyotyrant</groupId>
+	<artifactId>client-tokyotyrant</artifactId>
 	<packaging>jar</packaging>
 	<version>0.11</version>
 
 	<name>Tokyo Tyrant Java Client</name>
 	<description>This module implements the pure Java client which connects to the server of Tokyo Tyrant and speaks its original binary protocol.</description>
-	<url>http://code.google.com/p/tokyotyrant-java</url>
+	<url>https://github.com/jdyang/tokyo-tyrant-java-client/</url>
 
 	<scm>
-		<connection>scm:hg:http://bitbucket.org/EP/tokyotyrant-java/</connection>
-		<developerConnection>scm:hg:https://bitbucket.org/EP/tokyotyrant-java/</developerConnection>
-		<url>http://www.bitbucket.org/EP/tokyotyrant-java/</url>
+		<connection>scm:hg:https://github.com/jdyang/tokyo-tyrant-java-client/</connection>
+		<developerConnection>scm:hg:https://github.com/jdyang/tokyo-tyrant-java-client/</developerConnection>
+		<url>https://github.com/jdyang/tokyo-tyrant-java-client/</url>
 	</scm>
 
 	<issueManagement>
-		<url>http://code.google.com/p/tokyotyrant-java/issues/</url>
+		<url>http://github.com/jdyang/tokyo-tyrant-java-client/issues</url>
 	</issueManagement>
 
 	<developers>
 		<developer>
-			<id>eungju</id>
-			<name>Eung-ju PARK</name>
+			<name>Jiandong Yang</name>
+			<email>jdyangchina@gmail.com</email>
 		</developer>
 	</developers>
 
@@ -34,26 +35,26 @@
 		</license>
 	</licenses>
 
-    <repositories>
-        <repository>
-            <id>repository.jboss.org</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spy</id>
-            <name>Spy Repository</name>
-            <layout>default</layout>
-            <url>http://bleu.west.spy.net/~dustin/m2repo/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+	<repositories>
+		<repository>
+			<id>repository.jboss.org</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spy</id>
+			<name>Spy Repository</name>
+			<layout>default</layout>
+			<url>http://bleu.west.spy.net/~dustin/m2repo/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
-    <pluginRepositories>
+	<pluginRepositories>
 		<pluginRepository>
 			<id>undercover-snaphost</id>
 			<url>http://undercover.googlecode.com/svn/maven/snapshot-repository</url>
@@ -64,14 +65,6 @@
 	</pluginRepositories>
 
 	<distributionManagement>
-		<repository>
-			<id>tokyotyrant-java</id>
-			<url>dav:https://tokyotyrant-java.googlecode.com/svn/maven/repository</url>
-		</repository>
-		<snapshotRepository>
-			<id>tokyotyrant-java-snapshot</id>
-			<url>dav:https://tokyotyrant-java.googlecode.com/svn/maven/snapshot-repository</url>
-		</snapshotRepository>
 	</distributionManagement>
 
 	<dependencies>
@@ -115,9 +108,9 @@
 			<groupId>spy</groupId>
 			<artifactId>memcached</artifactId>
 			<version>2.4.2</version>
-            <scope>test</scope>
+			<scope>test</scope>
 		</dependency>
-  
+
 	</dependencies>
 
 	<build>
@@ -171,13 +164,13 @@
 			<plugin>
 				<groupId>undercover</groupId>
 				<artifactId>undercover-maven-plugin</artifactId>
-                                <configuration>
-                                        <formats>
-                                                <format>html</format>
-                                                <format>coberturaxml</format>
-                                                <format>emmaxml</format>
-                                        </formats>
-                                </configuration>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>coberturaxml</format>
+						<format>emmaxml</format>
+					</formats>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -212,7 +205,7 @@
 		<maven.compiler.encoding>utf-8</maven.compiler.encoding>
 		<maven.compiler.target>1.5</maven.compiler.target>
 		<maven.compiler.source>1.5</maven.compiler.source>
-        <jmock.version>2.5.1</jmock.version>
+		<jmock.version>2.5.1</jmock.version>
 	</properties>
 
 	<profiles>

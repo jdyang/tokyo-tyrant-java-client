@@ -1,7 +1,7 @@
 10
 
 dir
-98998
+100614
 svn://192.168.90.69/infrastructure/projects/iccs/trunk/tyrant-client/src/test/java/tokyotyrant/protocol
 svn://192.168.90.69
 
@@ -638,40 +638,6 @@ yangjiandong@snda.com
 
 987
 
-VsizTest.java
-file
-
-
-
-
-2011-02-15T09:40:48.956180Z
-78a8d8057c9a58fc13d3dfe119bf8a80
-2011-02-15T09:45:37.682905Z
-98998
-yangjiandong@snda.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1424
-
 MiscTest.java
 file
 
@@ -705,6 +671,40 @@ yangjiandong@snda.com
 
 
 1826
+
+VsizTest.java
+file
+
+
+
+
+2011-02-15T09:40:48.956180Z
+78a8d8057c9a58fc13d3dfe119bf8a80
+2011-02-15T09:45:37.682905Z
+98998
+yangjiandong@snda.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1424
 
 ExtTest.java
 file
@@ -808,40 +808,6 @@ yangjiandong@snda.com
 
 1276
 
-SizeTest.java
-file
-
-
-
-
-2011-02-15T09:40:48.909305Z
-b8b7455c30afabe1b04ec1bd0afb0c03
-2011-02-15T09:45:37.682905Z
-98998
-yangjiandong@snda.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1145
-
 CopyTest.java
 file
 
@@ -875,6 +841,40 @@ yangjiandong@snda.com
 
 
 1120
+
+SizeTest.java
+file
+
+
+
+
+2011-02-15T09:40:48.909305Z
+b8b7455c30afabe1b04ec1bd0afb0c03
+2011-02-15T09:45:37.682905Z
+98998
+yangjiandong@snda.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1145
 
 StatTest.java
 file
@@ -1012,40 +1012,6 @@ yangjiandong@snda.com
 
 1166
 
-PingCommand.java
-file
-
-
-
-
-2011-02-15T09:40:48.971805Z
-01c5b31f9f08d92c837891a22baca1d6
-2011-02-15T09:45:37.682905Z
-98998
-yangjiandong@snda.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-589
-
 MgetTest.java
 file
 
@@ -1079,4 +1045,38 @@ yangjiandong@snda.com
 
 
 1975
+
+PingCommand.java
+file
+
+
+
+
+2011-02-15T09:40:48.971805Z
+01c5b31f9f08d92c837891a22baca1d6
+2011-02-15T09:45:37.682905Z
+98998
+yangjiandong@snda.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+589
 

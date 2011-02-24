@@ -13,11 +13,12 @@ public class MRDBExample {
 		MRDB db = new MRDB();
 
 		// connect to the servers
-		db.open(NodeAddress.addresses("tcp://localhost:1978"));
+		db
+				.open(NodeAddress
+						.addresses("tcp://10.150.39.25:11211 tcp://10.150.39.26:11211"));
 
 		// store records
-		if (!db.await(db.put("foo", "hop"))
-				|| !db.await(db.put("bar", "step"))
+		if (!db.await(db.put("foo", "hop")) || !db.await(db.put("bar", "step"))
 				|| !db.await(db.put("baz", "jump"))) {
 			System.err.println("put error");
 		}
