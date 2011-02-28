@@ -17,7 +17,48 @@ import tokyotyrant.transcoder.IntegerTranscoder;
 public class RDBExample {
 	public static void main(String[] args) throws IOException {
 		// add();
-		get();
+		// get();
+		// bet();
+		del();
+	}
+
+	static void del() {
+		RDB db = new RDB();
+
+		db.open(new InetSocketAddress("10.150.39.25", 11211));
+
+//		String name = "out";
+//		List<byte[]> col = new ArrayList<byte[]>();
+//		String cond = "addcond\0out\0table";
+//		col.add(cond.getBytes());
+//
+//		db.misc(name, col, 1);
+		
+		db.out("table");
+		
+		db.close();
+	}
+
+	static void bet() {
+		RDB db = new RDB();
+
+		db.open(new InetSocketAddress("10.150.39.25", 11211));
+
+		String name = "search";
+		List<byte[]> col = new ArrayList<byte[]>();
+		String cond = "addcond\0age\0NUMGE\0";
+		byte[] hel = "12,20".getBytes();
+		byte[] tt = new byte[cond.getBytes().length + hel.length];
+		System.arraycopy(cond.getBytes(), 0, tt, 0, cond.getBytes().length);
+		System.arraycopy(hel, 0, tt, cond.getBytes().length, hel.length);
+		col.add(tt);
+
+		List<byte[]> res = db.misc(name, col, 1);
+		System.out.println(res.size());
+		for (byte[] tmp : res) {
+			System.out.println(new String(tmp));
+		}
+		db.close();
 	}
 
 	static void get() throws IOException {
@@ -28,23 +69,12 @@ public class RDBExample {
 
 		String name = "search";
 		List<byte[]> col = new ArrayList<byte[]>();
-		String str = "addcond\0age\0NUMBT\012,20";
-//		byte[] min = l2b(16l);
-//		byte[] max = l2b(20l);
-//		byte[] co = ",".getBytes();
-//		byte[] tt = new byte[str.getBytes().length + min.length + co.length
-//				+ max.length];
-//		System.arraycopy(str.getBytes(), 0, tt, 0, str.getBytes().length);
-//		System.arraycopy(min, 0, tt, str.getBytes().length, min.length);
-//		System.arraycopy(co, 0, tt, str.getBytes().length + min.length,
-//				co.length);
-//		System.arraycopy(max, 0, tt, str.getBytes().length + co.length
-//				+ min.length, max.length);
-//		col.add(tt);
-//		for (byte tmp : tt) {
-//			System.out.printf("%c", tmp);
-//		}
-		col.add(str.getBytes());
+		String cond = "addcond\0age\0NUMGE\0";
+		byte[] hel = "20".getBytes();
+		byte[] tt = new byte[cond.getBytes().length + hel.length];
+		System.arraycopy(cond.getBytes(), 0, tt, 0, cond.getBytes().length);
+		System.arraycopy(hel, 0, tt, cond.getBytes().length, hel.length);
+		col.add(tt);
 
 		List<byte[]> res = db.misc(name, col, 1);
 		System.out.println(res.size());

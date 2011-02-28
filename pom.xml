@@ -5,11 +5,12 @@
 	<groupId>com.holmes.tokyotyrant</groupId>
 	<artifactId>client-tokyotyrant</artifactId>
 	<packaging>jar</packaging>
-	<version>0.11</version>
+	<version>0.11-SNAPSHOT</version>
 
 	<name>Tokyo Tyrant Java Client</name>
 	<description>This module implements the pure Java client which connects to the server of Tokyo Tyrant and speaks its original binary protocol.</description>
 	<url>https://github.com/jdyang/tokyo-tyrant-java-client/</url>
+
 
 	<scm>
 		<connection>scm:hg:https://github.com/jdyang/tokyo-tyrant-java-client/</connection>
@@ -65,9 +66,79 @@
 	</pluginRepositories>
 
 	<distributionManagement>
+		<repository>
+			<id>sdo-release</id>
+			<name>Internal Releases</name>
+			<url>http://192.168.90.69:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<!-- new line -->
+		<snapshotRepository>
+			<id>sdo-snapshots</id>
+			<name>Internal snapshots</name>
+			<url>http://192.168.90.69:8081/nexus/content/repositories/snapshots</url>
+			<uniqueVersion>true</uniqueVersion>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<dependencies>
+
+		<!-- spring framework support -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.jboss.netty</groupId>
 			<artifactId>netty</artifactId>
@@ -206,6 +277,8 @@
 		<maven.compiler.target>1.5</maven.compiler.target>
 		<maven.compiler.source>1.5</maven.compiler.source>
 		<jmock.version>2.5.1</jmock.version>
+		<slf4j.version>1.5.8</slf4j.version>
+		<spring.version>3.0.5.RELEASE</spring.version>
 	</properties>
 
 	<profiles>

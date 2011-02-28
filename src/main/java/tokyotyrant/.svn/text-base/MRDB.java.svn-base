@@ -1,6 +1,7 @@
 package tokyotyrant;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -21,6 +22,7 @@ import tokyotyrant.protocol.Ext;
 import tokyotyrant.protocol.Fwmkeys;
 import tokyotyrant.protocol.Get;
 import tokyotyrant.protocol.Mget;
+import tokyotyrant.protocol.Misc;
 import tokyotyrant.protocol.Out;
 import tokyotyrant.protocol.Put;
 import tokyotyrant.protocol.Putcat;
@@ -116,7 +118,6 @@ public class MRDB extends AbstractDB{
 		networking.send(node, command);
 		return future;
 	}
-	
 	/**
 	 * Await the future gracefully.
 	 * 
