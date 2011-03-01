@@ -13,7 +13,7 @@ public interface TokyoTableService {
 	
 	public void insert(String key, List<Pair> pairs);
 	
-	public List<String> search(SearchRex rex);
+	public List<String> search(SearchRex... rexs);
 	
 	public int delete(String key);
 	

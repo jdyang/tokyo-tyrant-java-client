@@ -24,10 +24,6 @@ public class TokyoTableServiceNIOImpl implements TokyoTableService,
 	public void insert(String key, List<Pair> pairs) {
 	}
 
-	public List<String> search(SearchRex rex) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void afterPropertiesSet() throws Exception {
 		client.init();
@@ -36,6 +32,12 @@ public class TokyoTableServiceNIOImpl implements TokyoTableService,
 
 	public int delete(String key) {
 		return -1;
+	}
+
+
+	public List<String> search(SearchRex... rexs) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -30,42 +30,52 @@ public class TokyoTableServiceImpl implements TokyoTableService,
 		List<byte[]> col = new ArrayList<byte[]>();
 		col.add(key.getBytes());
 		for (Pair tmp : pairs) {
+			if (null == tmp) {
+				continue;
+			}
 			col.add(tmp.key.getBytes());
+			if (null == tmp.value) {
+				tmp.value = "";
+			}
 			col.add(tmp.value.getBytes());
 		}
-
+		
 		db.misc(name, col, 0);
 
 	}
 
-	public List<String> search(SearchRex rex) {
+	public List<String> search(SearchRex... rexs) {
 		String name = "search";
 		List<byte[]> col = new ArrayList<byte[]>();
 
-		String cond = "addcond\0";
-		cond += rex.getTarget().key;
-		cond += "\0";
-		cond += rex.getOpt();
-		cond += "\0";
-		// String str = "addcond\0age\0NUMBT\012,20";
-		byte[] hel = rex.getTarget().value.getBytes();
-		byte[] tt = new byte[cond.getBytes().length + hel.length];
-		System.arraycopy(cond.getBytes(), 0, tt, 0, cond.getBytes().length);
-		System.arraycopy(hel, 0, tt, cond.getBytes().length, hel.length);
-		col.add(tt);
+		for (SearchRex rex : rexs) {
+			String cond = "addcond\0";
+			cond += rex.getTarget().key;
+			cond += "\0";
+			cond += rex.getOpt();
+			cond += "\0";
+			// String str = "addcond\0age\0NUMBT\012,20";
+			byte[] hel = rex.getTarget().value.getBytes();
+			byte[] tt = new byte[cond.getBytes().length + hel.length];
+			System.arraycopy(cond.getBytes(), 0, tt, 0, cond.getBytes().length);
+			System.arraycopy(hel, 0, tt, cond.getBytes().length, hel.length);
+			col.add(tt);
+		}
+		
+		
 
 		List<byte[]> res = db.misc(name, col, 1);
 		List<String> ret = new ArrayList<String>();
 		for (byte[] tmp : res) {
 			ret.add(new String(tmp));
-			System.out.println(new String(tmp));
 		}
 		return ret;
 	}
 
 	public void afterPropertiesSet() throws Exception {
 		db = new RDB();
-		db.open(new InetSocketAddress("10.150.39.25", 11211));
+//		db.open(new InetSocketAddress("10.150.39.25", 11211));
+		db.open(new InetSocketAddress(ip, port));
 
 	}
 

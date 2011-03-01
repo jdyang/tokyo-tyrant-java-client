@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.holmes.tokyotable.service.Pair;
+import com.holmes.tokyotable.service.SearchRex;
+import com.holmes.tokyotable.service.TokyoTableService;
+import com.holmes.tokyotable.service.TokyoTableServiceImpl;
+
 import net.sf.cglib.transform.impl.AddDelegateTransformer;
 
 import tokyotyrant.RDB;
@@ -19,7 +24,37 @@ public class RDBExample {
 		// add();
 		// get();
 		// bet();
-		del();
+		// del();
+		search();
+	}
+
+	static void search() {
+		TokyoTableServiceImpl s = new TokyoTableServiceImpl();
+		s.setIp("10.150.39.25");
+		s.setPort(11211);
+		try {
+			s.afterPropertiesSet();
+			SearchRex rex = new SearchRex();
+			rex.setTarget(new Pair("longTime", "0,1298965353980"));
+			rex.setOpt(SearchRex.NUMBT);
+			
+			SearchRex rex1 = new SearchRex();
+			rex1.setTarget(new Pair("packetstate", "11".toString()));
+			rex1.setOpt(SearchRex.STREQ);
+//			
+			
+			List<String> ret = s.search(rex, rex1);
+//			List<String> ret = s.search(rex1);
+			
+			System.out.println(ret.size());
+			for (String tmp : ret) {
+				System.out.println(tmp);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	static void del() {
@@ -27,15 +62,15 @@ public class RDBExample {
 
 		db.open(new InetSocketAddress("10.150.39.25", 11211));
 
-//		String name = "out";
-//		List<byte[]> col = new ArrayList<byte[]>();
-//		String cond = "addcond\0out\0table";
-//		col.add(cond.getBytes());
-//
-//		db.misc(name, col, 1);
-		
+		// String name = "out";
+		// List<byte[]> col = new ArrayList<byte[]>();
+		// String cond = "addcond\0out\0table";
+		// col.add(cond.getBytes());
+		//
+		// db.misc(name, col, 1);
+
 		db.out("table");
-		
+
 		db.close();
 	}
 
