@@ -5,31 +5,77 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import com.holmes.tokyotable.service.Pair;
-import com.holmes.tokyotable.service.SearchRex;
-import com.holmes.tokyotable.service.TokyoTableService;
-import com.holmes.tokyotable.service.TokyoTableServiceImpl;
-
-import net.sf.cglib.transform.impl.AddDelegateTransformer;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import tokyotyrant.RDB;
-import tokyotyrant.transcoder.DoubleTranscoder;
-import tokyotyrant.transcoder.IntegerTranscoder;
+
+import com.holmes.tokyotable.service.DefaultTokyoTableEngine;
+import com.holmes.tokyotable.service.Pair;
+import com.holmes.tokyotable.service.SearchRex;
 
 public class RDBExample {
 	public static void main(String[] args) throws IOException {
-		// add();
+		//		add();
 		// get();
 		// bet();
 		// del();
-		search();
+		// search();
+		insert();
+		// test();
+	}
+
+	static void test() {
+		DefaultTokyoTableEngine s = new DefaultTokyoTableEngine();
+		s.setIp("10.150.39.25");
+		s.setPort(11211);
+		try {
+			s.afterPropertiesSet();
+
+			List<Pair> l = new ArrayList<Pair>();
+
+			l.add(new Pair("longTime", "124"));
+
+			s.insert("youraremin", l);
+
+			SearchRex rex = new SearchRex();
+			rex.setOpt(SearchRex.NUMEQ);
+			rex.setTarget(new Pair("longTime", "123"));
+
+			System.out.println(s.search(rex));
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	static void insert() {
+		DefaultTokyoTableEngine s = new DefaultTokyoTableEngine();
+		s.setIp("10.150.39.25");
+		s.setPort(11211);
+		try {
+			s.afterPropertiesSet();
+
+			List<Pair> l = new ArrayList<Pair>();
+
+			l.add(new Pair("longTime", "123"));
+
+			s.insert("youraremin", l);
+			Map<String, String> map = s.get("youraremin");
+			for (Entry<String, String> tmp : map.entrySet()) {
+				System.out.println(tmp.getKey() + " " + tmp.getValue());
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	static void search() {
-		TokyoTableServiceImpl s = new TokyoTableServiceImpl();
+		DefaultTokyoTableEngine s = new DefaultTokyoTableEngine();
 		s.setIp("10.150.39.25");
 		s.setPort(11211);
 		try {
@@ -37,15 +83,15 @@ public class RDBExample {
 			SearchRex rex = new SearchRex();
 			rex.setTarget(new Pair("longTime", "0,1298965353980"));
 			rex.setOpt(SearchRex.NUMBT);
-			
+
 			SearchRex rex1 = new SearchRex();
 			rex1.setTarget(new Pair("packetstate", "11".toString()));
 			rex1.setOpt(SearchRex.STREQ);
-//			
-			
-			List<String> ret = s.search(rex, rex1);
-//			List<String> ret = s.search(rex1);
-			
+			//
+
+			// List<String> ret = s.search(rex, rex1);
+			List<String> ret = s.search(rex);
+
 			System.out.println(ret.size());
 			for (String tmp : ret) {
 				System.out.println(tmp);
